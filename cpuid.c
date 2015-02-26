@@ -25,7 +25,18 @@ do_cpuid(u_int ax, u_int *p) {
 int
 main(int argc, char *argv[]) {
     u_int regs[4];
-    typedef struct { char *vendor; int type; } cpu_t;
+    typedef struct {
+        char *vendor;
+        int type;
+        u_int maxindex;
+        u_int model;
+        u_int family;
+        u_int signature;
+        u_int stepping;
+        u_int brand;
+        u_int extmodel;
+        u_int extfamily;
+    } cpu_t;
     typedef struct { const char *name; u_int reg; u_int bit; } cpufeat_t;
     cpu_t cpu = { "unknown", 0 } ;
 
@@ -117,6 +128,14 @@ main(int argc, char *argv[]) {
 
     do_cpuid(1, regs);
 
+    cpu.signature =       regs[0];
+    cpu.stepping  = 0xf & regs[0];
+    cpu.model     = 0xf & regs[0] >> 4;
+    cpu.family    = 0xf & regs[0] >> 8;
+    cpu.brand     = 0xf & regs[0] >> 12;
+    cpu.extmodel  = 0xf & regs[0] >> 16;
+    cpu.extfamily = 0xf & regs[0] >> 20;
+
     int comma = 0;
     printf("@features= {");
     for (cpufeat_t *p = cpu_features; p->name != NULL; ++p) {
@@ -126,6 +145,14 @@ main(int argc, char *argv[]) {
         comma = 1;
     }
     printf(" }\n");
+
+    printf("=%s=%i\n", "signature", cpu.signature);
+    printf("=%s=%i\n", "stepping", cpu.stepping);
+    printf("=%s=%i\n", "model", cpu.model);
+    printf("=%s=%i\n", "family", cpu.family);
+    printf("=%s=%i\n", "brand", cpu.brand);
+    printf("=%s=%i\n", "extmodel", cpu.extmodel);
+    printf("=%s=%i\n", "extfamily", cpu.extfamily);
 
     return(0);
 }
