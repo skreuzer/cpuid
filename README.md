@@ -56,3 +56,5 @@ CFEngine module for calling CPUID
     R:      cx8
     ... snip ...
     R: this host supports the avx instruction set
+
+[![Build Status](https://travis-ci.org/skreuzer/cpuid.svg?branch=master)](https://travis-ci.org/skreuzer/cpuid)
