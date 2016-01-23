@@ -4,7 +4,14 @@ CFEngine module for calling CPUID
 
 ## Installation
 
+On FreeBSD, NetBSD and OpenBSD
+
     sudo make install
+
+On Mac OS X you will need to install bsdmake from homebrew
+
+    brew install bsdmake
+    sudo bsdmake install
 
 ## Example Usage
 
