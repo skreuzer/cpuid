@@ -13,6 +13,11 @@ On Mac OS X you will need to install bsdmake from homebrew
     brew install bsdmake
     sudo bsdmake install
 
+On Ubuntu you will need to install the freebsd-buildutils package
+
+    sudo apt-get install freebsd-buildutils
+    sudo freebsd-make install
+
 ## Example Usage
 
     body common control
