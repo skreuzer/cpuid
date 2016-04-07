@@ -1,4 +1,12 @@
-script: make
+before_install:
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo apt-get install freebsd-glue; fi
+  - if [ "$TRAVIS_OS_NAME" == "osx" ]; then brew update; brew install bsdmake; fi
+script:
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then fmake; fi
+  - if [ "$TRAVIS_OS_NAME" == "osx" ]; then bsdmake; fi
+os:
+  - linux
+  - osx
 language: c
 compiler:
   - clang
