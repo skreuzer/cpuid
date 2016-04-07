@@ -1,4 +1,4 @@
-CFLAGS+=	-Wall -I. -g
+CFLAGS+=	-std=c99 -Wall -I. -g -D_BSD_SOURCE
 PREFIX?=	/var/cfengine/modules
 
 SRC=	cpuid.c
