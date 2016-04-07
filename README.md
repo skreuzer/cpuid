@@ -50,7 +50,7 @@ On Mac OS X you will need to install bsdmake from homebrew
     }
 
     sudo /var/cfengine/bin/cf-agent -K -f ./cpuid_example.cf
-    R: this is an intel processor
+    R: this host has an intel processor
     R: EAX=1 Features:
     R:      fpu
     R:      vme
