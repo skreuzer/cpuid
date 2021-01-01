@@ -58,7 +58,7 @@ main(int argc, char *argv[]) {
         printf("+%s\n=vendor=%s\n", cpu.vendor, cpu.vendor);
     }
 
-    if(cpu.type != INTEL || cpu.type == 0) {
+    if(cpu.type == 0) {
         return(0);
     }
 
